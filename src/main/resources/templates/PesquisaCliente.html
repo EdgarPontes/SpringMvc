@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<title>Pesquisa usuario</title>
+<link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}" />
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Pesquisa de Cliente</h1>
+			</div>
+			<div class="panel-title">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md1">#</th>
+							<th>Nome</th>
+							<th class="text-center col-md2">Data de Nacimento</th>
+							<th class="text-center col-md2">Cpf</th>
+							<th class="text-center col-md2">Telefone</th>
+							<th class="text-center col-md2">Cep</th>
+							<th class="text-center col-md2">Endereco</th>
+							<th class="text-center col-md2">Numero</th>
+							<th class="text-center col-md2">Complemento</th>
+							<th class="text-center col-md2">Bairro</th>
+							<th class="text-center col-md2">Cidade</th>
+							<th class="text-center col-md2">Estado</th>
+							<th class="text-center col-md2">Email</th>
+							<th class="text-center col-md2">Senha</th>
+							<th class="text-center col-md2">Envia Email</th>
+							<th class="text-center col-md2">Status</th>
+							<th class="col-md1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente : ${clientes}">
+							<td class="text-center" th:text="${cliente.codigo}"></td>
+							<td class="text-center" th:text="${cliente.nome}"></td>
+							<td class="text-center" th:text="${{cliente.dataNascimento}}"></td>
+							<td class="text-center" th:text="${cliente.cpf}"></td>
+							<td class="text-center" th:text="${cliente.telefone}"></td>
+							<td class="text-center" th:text="${cliente.cep}"></td>
+							<td class="text-center" th:text="${cliente.endereco}"></td>
+							<td class="text-center" th:text="${cliente.numero}"></td>
+							<td class="text-center" th:text="${cliente.complemento}"></td>
+							<td class="text-center" th:text="${cliente.bairro}"></td>
+							<td class="text-center" th:text="${cliente.cidade}"></td>
+							<td class="text-center" th:text="${cliente.estado}"></td>
+							<td class="text-center" th:text="${cliente.email}"></td>
+							<td class="text-center" th:text="${cliente.senha}"></td>
+							<td class="text-center" th:text="${cliente.emailPromocao}"></td>
+							<td class="text-center" th:text="${cliente.statusCliente}"></td>
+						</tr>
+						<tr>
+							<td colspan="15" th:if="${#lists.isEmpty(clientes)}">Nenhum
+								cliente encontrado</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Confirmação</title>
+
+<!-- Bootstrap Core CSS -->
+<link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link th:href="@{/static/css/shop-item.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="col-md-9">
+
+		<div class="panel panel-default"></div>
+			<!-- itens -->
+			<div class="panel-heading">Informações dos produtos</div>
+
+			<!-- Table -->
+			<table class="table">
+				<tr>
+					<th>Imagem</th>
+					<th>Produto</th>
+					<th>Quantidade</th>
+					<th>Unitario</th>
+					<th>Total</th>
+				</tr>
+				<tr>
+					<td><img src="" alt="Mountain View"
+						style="width: 80px; height: 80px;"/></td>
+					<td>Protetor de Molas</td>
+					<td>8 Un</td>
+					<td>310,00</td>
+					<td>2480,00</td>
+
+				</tr>
+				<tr>
+					<td><img src="" alt="Mountain View"
+						style="width: 80px; height: 80px;"/></td>
+					<td>Cama Elastica</td>
+					<td>10 un</td>
+					<td>300,00</td>
+					<td>3000,00</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="panel panel-default col-md-9 col-sm-9 col-lg-9">
+			<div class="form-group col-md-6 col-sm-6 col-lg-6">
+				<label for="Cep">Digite seu CEP</label> <input type="cep"
+					class="form-control" id="cep" placeholder="CEP" name="cep" />
+				<button type="submit" class="btn btn-success">OK</button>
+			</div>
+			<div class="form-group col-md-6 col-sm-6 col-lg-6">
+				<label for="formas-entrega">Formas de entrega</label><br></br> <input
+					type="checkbox" /> PAC R$ 32,50 8 á 15 Dias<br></br><input
+					type="checkbox" /> Sedex R$ 80,00 1 á 5 Dias
+			</div>
+		</div>
+		<div class="panel panel-default col-md-7">
+			<div class="form-group col-md-6 col-sm-6 col-lg-6">
+				<label for="total-produtos">Total dos Produtos</label> <label
+					for="frete">Frete</label> <label for="valor-total">Valor
+					Total</label>
+			</div>
+			<div class="form-group col-md-6 col-sm-6 col-lg-6">
+				<label for="valor-produtos">6480,00</label><br></br> <label
+					for="valor-frete">80,00</label> <br></br><label
+					for="campo-valor-total">6560,00</label> <br></br><label
+					for="em-ate">ou 10x de 656,00</label>
+
+			</div>
+		</div>
+</body>
+</html>

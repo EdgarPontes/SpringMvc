@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Cadastro de Banners</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/static/startbootstrapages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- MetisMenu CSS -->
+    <link th:href="@{/static/startbootstrapages/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link th:href="@{/static/startbootstrapages/dist/css/sb-admin-2.css}" rel="stylesheet"/>
+
+    <!--css cadastro produto-->
+    <link th:href="@{/static/startbootstrapages/dist/css/banners.css}" rel="stylesheet"/>
+
+    <!-- Morris Charts CSS -->
+    <link th:href="@{/static/startbootstrapages/vendor/morrisjs/morris.css}" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link th:href="@{/static/startbootstrapages/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" th:href="@{/index.html}">Bello Joy Admin</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a th:href="@{/login.html}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                       <li>
+                            <a th:href="@{/indexAdmin}"><i class="fa fa-shopping-cart"></i> Cadastro de Produtos</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/listaProdutos.html}"><i class="fa fa-list"></i> Lista de Produtos</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/clienteAdmin.html}"><i class="fa fa-table fa-fw"></i> Clientes</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/banner}"><i class="fa fa-picture-o"></i> Banners</a>
+                        </li>
+                        <li><a th:href="@{/categoria}"><i class="fa fa-calendar-check-o"></i> Categoria</a></li>
+                        <li>
+                            <a th:href="@{/emailPromocional/1}"><i class="fa fa-envelope-o"></i> Email Promocional</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/contato/1}"><i class="fa fa-envelope-o"></i> Contatos</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/uploadForm}"><i class="fa fa-picture-o"></i> Imagem</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/configuracao}"><i class="fa fa-edit fa-fw"></i> Configurações</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Cadastro de Banners para Tela Principal</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+				<form method="POST" th:action="@{/banner}" th:object="${banner}" >
+					<div class="col-xs-6">
+					<input type="hidden" th:field="*{codigo}" />
+						<div class="form-group">
+							<label for="banner_label">Banner 1 - Descrição</label> 
+							<input type="text" class="form-control" name="descricaoUm" th:field = "*{descricaoUm}"/>
+						</div>
+						<div class="form-group">
+							<label for="banner_label">Banner 2 - Descrição</label> 
+							<input type="text" class="form-control" name="descricaoDois" th:field = "*{descricaoDois}" />
+						</div>
+						<div class="form-group">
+							<label for="banner_label">Banner 3 - Descrição</label> 
+							<input type="text" class="form-control" name="descricaoTres" th:field = "*{descricaoTres}"/>
+						</div>
+						<div class="form-group">
+							<label for="banner_label">Banner 4 - Descrição</label> 
+							<input type="text" class="form-control" name="descricaoQuatro" th:field = "*{descricaoQuatro}"/>
+						</div>
+						<div class="form-group">
+							<label for="banner_label">Banner 5 - Descrição</label> 
+							<input type="text" class="form-control" name="descricaoCinco" th:field = "*{descricaoCinco}"/>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label for="file_banner">Banner 1 - Imagem</label> 
+							<input type="file" id="file_banner" name="bannerUm" th:field = "*{bannerUm}"/>
+							<p class="help-block">Escolha uma imagem</p>
+						</div>
+						<div class="form-group">
+							<label for="file_banner">Banner 2 - Imagem</label> 
+							<input type="file" id="file_banner" name="bannerDois" th:field = "*{bannerDois}"/>
+							<p class="help-block">Escolha uma imagem</p>
+						</div>
+						<div class="form-group">
+							<label for="file_banner">Banner 3 - Imagem</label> 
+							<input type="file" id="file_banner" name="bannerTres" th:field = "*{bannerTres}"/>
+							<p class="help-block">Escolha uma imagem</p>
+						</div>
+						<div class="form-group">
+							<label for="file_banner">Banner 4 - Imagem</label> 
+							<input type="file" id="file_banner" name="bannerQuatro" th:field = "*{bannerQuatro}"/>
+							<p class="help-block">Escolha uma imagem</p>
+						</div>
+						<div class="form-group">
+							<label for="file_banner">Banner 5 - Imagem</label> 
+							<input type="file" id="file_banner" name="bannerCinco" th:field = "*{bannerCinco}"/>
+							<p class="help-block">Escolha uma imagem</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 buttons-banner">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+							<button type="button" class="btn btn-danger">Cancelar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script th:src="@{/../../static/startbootstrapages/vendor/jquery/jquery.min.js}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script th:src="@{/../../static/startbootstrapages/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script th:src="@{/../../static/startbootstrapages/vendor/metisMenu/metisMenu.min.js}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script th:src="@{/../../static/startbootstrapages/vendor/raphael/raphael.min.js}"></script>
+    <script th:src="@{/../../static/startbootstrapages/vendor/morrisjs/morris.min.js}"></script>
+    <script th:src="@{/../../static/startbootstrapages/data/morris-data.js}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script th:src="@{/../../static/startbootstrapages/dist/js/sb-admin-2.js}"></script>
+
+</body>
+
+</html>

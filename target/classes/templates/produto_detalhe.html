@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+  
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+	    <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/static/css/produto_detalhe.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.min.css}" />
+	<link th:href="@{/static/css/shop-homepage.css}" rel="stylesheet" />
+	<link th:href="@{/static/css/home.css}" rel="stylesheet" />
+	  <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}"/>
+	<link th:href="@{https://fonts.googleapis.com/css?family=Acme|Nunito:400,900i|Pacifico}" rel="stylesheet"/>
+
+  
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container pesquisa_container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-xs-12">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="menu-pesquisa">
+                  <div class="col-xs-3"><a class="navbar-brand" th:href="@{/index}">Bello Joy</a></div>
+                    <div class="col-xs-7">
+                        <form th:action="@{/pesquisa}" method="GET" class="form-horizontal">
+							<div class="form-group">
+								<input type="text" class="form-control" id="procurar"
+									placeholder="Procurar" name="nome" title="Faça sua pesquisa pelo site" />
+							</div>
+								<button class="botao_pesquisa" type="submit">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+						</form>
+                    </div>   
+                    <div class="col-2 menu_login">
+                        <div class="dropdown">
+                              <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <h5>Olá Visitante<span class="caret"></span></h5>
+                                
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a th:href="@{/login}">Login</a></li>
+                                
+                              </ul>
+                      	</div>
+                    </div>
+                </div>  
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="container">
+                    <ul class="nav navbar-nav col-xs-12">
+                        <li th:each="categoria:${todasCategoria}" th:value ="${categoria}">
+                            <a th:href="${categoria}"  th:text="${categoria}"></a>
+                        </li>
+                        <li>
+                            <span>CARRINHO</span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>    
+            </div>
+    </nav>
+<!--      -->
+   <div class="container principal-container" th:each="produto:${produtos}" th:value ="${produto}" >
+		<div class="row">
+			<div class="col-xs-3">
+				<h3 th:text="${produto.nome}"></h3>
+				<p th:text="${produto.descricao}">
+				</p>
+<!-- 				<select class="form-control"> -->
+<!-- 				  <option>Disponíveis nas medidas:</option> -->
+<!-- 				  <option>90cm x 40cm x 2cm</option> -->
+<!-- 				  <option>90cm x 40cm x 2cm</option> -->
+<!-- 				  <option>90cm x 40cm x 2cm</option> -->
+<!-- 				  <option>90cm x 40cm x 2cm</option> -->
+<!-- 				</select> -->
+<!-- 				<select class="form-control"> -->
+<!-- 				  <option>Disponível nas cores:</option> -->
+<!-- 				  <option>Azul</option> -->
+<!-- 				  <option>Laranja</option> -->
+<!-- 				  <option>Vermelho</option> -->
+<!-- 				  <option>Amarelo</option> -->
+<!-- 				</select> -->
+			</div>
+			<div class="col-xs-6">
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+								<div class="carousel slide" id="myCarousel">
+									<!-- Carousel items -->
+									<div class="carousel-inner">
+										<div class="active item zoom" id='ex1' data-slide-number="0">
+ 											<img  th:src="@{/imagens/} + ${produto.imagem1}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="1">
+											 <img  th:src="@{/imagens/} + ${produto.imagem2}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="2">
+											 <img  th:src="@{/imagens/} + ${produto.imagem3}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="3">
+											 <img  th:src="@{/imagens/} + ${produto.imagem4}" alt=""/>
+										</div>
+									</div>
+									<!-- Carousel nav -->
+									<a class="left carousel-control" href="#myCarousel"
+										role="button" data-slide="prev"> <span
+										class="glyphicon glyphicon-chevron-left"></span>
+									</a> <a class="right carousel-control" href="#myCarousel"
+										role="button" data-slide="next"> <span
+										class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div><!--/Slider-->
+
+                <div class="row hidden-xs" id="slider-thumbs">
+                        <!-- Bottom switcher of slider -->
+                        <ul class="hide-bullets">
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-0"> <img  th:src="@{/imagens/} + *{produto.imagem1}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-1"> <img  th:src="@{/imagens/} + *{produto.imagem2}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-2"> <img  th:src="@{/imagens/} + *{produto.imagem3}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-3"> <img  th:src="@{/imagens/} + *{produto.imagem4}" alt=""/></a>
+                            </li>
+                        </ul>                 
+                </div>
+			</div>
+			    <div class="col-xs-3">
+				    <div class="valor_produto">
+<!-- 		                    <h4><a href="#">Protetor de Molas Para Cama Elástica Diversos Tamanhos</a></h4> -->
+		                    <h4 class="valorTitulo" th:if="${!#strings.isEmpty(produto.produtoPromocao)}">R$ <span th:text="${produto.valorComDesconto}"></span></h4>
+			                <h4 class="valorTitulo" th:if="${#strings.isEmpty(produto.produtoPromocao)}">R$ <span th:text="${produto.valorProduto}"></span></h4>
+			                
+			                <div class="ratings">
+                                <p class="pull-right" th:if="${!#strings.isEmpty(produto.produtoPromocao)}">OFERTA</p>
+                                <p th:if="${!#strings.isEmpty(produto.freteGratis)}">FRETE GRÁTIS</p>
+				            </div>
+
+			        <form method="POST" action="/produto_detalhe" th:object ="${produto.codigo}">
+
+			        <div class="quantidade_class">
+<!-- 			            <div> -->
+<!-- 			               <input type="hidden" class="form-control" id="quantidade" name="codigoProduto" th:field="*{codigo}" /> -->
+<!-- 			            </div> -->
+			            <div class="form-group">
+							<label for="exampleInputEmail1">Quantidade:</label>
+							<input type="number" class="form-control" id="quantidadePedido" name="quantidadePedido" min="1"/>
+			            </div>
+			            <div class="pull-right">
+			                <button type="submit" class="btn btn-primary" onclick="buscar()">Inserir no carrinho</button>
+			            </div>
+		            </div>
+
+<!-- 			         <div class="calcular_frete_class"> -->
+<!-- 			            <div class="form-group"> -->
+<!-- 							<label for="exampleInputEmail1">Calcular Frete:</label> -->
+<!-- 							<input type="email" class="form-control" id="calculo_frete" placeholder="Cep"/> -->
+<!-- 			            </div> -->
+<!-- 			            <div class="pull-right"> -->
+<!-- 			                <button type="button" class="btn btn-primary">Calcular o frete</button> -->
+<!-- 			            </div> -->
+<!-- 		            </div> -->
+		            </form>
+				</div>
+		    </div>
+	   </div>
+   </div>
+       <!-- /.container -->
+   <div class="col-xs-12 mensagem_oferta">
+       <div class="container">
+			<form method="POST" th:action="@{/index}" style="color: #fff;">
+				<center>
+					<div class="form-group">
+						<label for="ofertas">OFERTAS E DESCONTOS</label>
+						<p>Inscreva-se para receber ofertas e descontos exclusivos</p>
+						<input type="text" class="form-control" id="oferta"
+							placeholder="Digite seu email" name="email" />
+					</div>
+					<div class="form-group form-buttom-email">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</center>
+			</form>
+		</div>
+   </div>
+	<div class="container">
+		<hr></hr>
+
+        <!-- Footer -->
+        <footer th:each="categoria:${todosContatos}" th:value ="${categoria}">
+            <div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12 contats">
+						<div class="row">
+							<ul class="col-xs-12">
+								<li class="col-xs-2"><i class="fa fa-facebook" ></i><a href="https://www.facebook.com/bello.joy.35325?fref=ts" th:text="${categoria.facebook}"></a></li>
+								<li class="col-xs-2"><i class="fa fa-whatsapp" ></i><span th:text="${categoria.whatsApp}"></span></li>
+								<li class="col-xs-2"><i class="fa fa-phone" ></i><span th:text="${categoria.telefoneOne}"></span></li>
+								<li class="col-xs-2"><i class="fa fa-phone" ></i><span th:text="${categoria.telefoneTwo}"></span></li>
+								<li class="col-xs-2"><i class="fa fa-phone"></i><span  th:text="${categoria.telefoneThree}"></span></li>
+							</ul>
+						</div>
+					</div>
+<!-- 					<div class="xs-6 facebook"> -->
+<!-- 						<iframe -->
+<!-- 							src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" -->
+<!-- 							width="340" height="300" style="border: none; overflow: hidden;" -->
+<!-- 							></iframe> -->
+<!-- 					</div> -->
+				</div>
+            </div>
+        </footer>
+        <div class="col-lg-12 copy">
+            <div class="row">
+                <p>Copyright &copy; Bello Joy  2017</p>
+            </div>
+        </div>
+
+	</div>
+ 	<!-- jQuery -->
+    <script th:src="@{/js/jquery.js}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    
+    <script type="text/javascript">
+    
+    function buscar(){
+       
+       var nome = document.getElementById("quantidadePedido").value;
+
+    jQuery.ajax({
+        type:  'POST',
+        url:   'produto_detalhe',
+        dataType: 'json',
+        data: {
+            valor : nome
+        },
+//         success: function(data){
+//            alert(data.response);
+//         }
+    });       
+}
+    
+    </script>
+    
+    <script>
+   	  jQuery(document).ready(function($) {
+ 
+        $('#myCarousel').carousel({
+                interval: 5000
+        });
+ 
+        $('#carousel-text').html($('#slide-content-0').html());
+ 
+        //Handles the carousel thumbnails
+       $('[id^=carousel-selector-]').click( function(){
+            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+            var id = parseInt(id);
+            $('#myCarousel').carousel(id);
+        });
+ 
+ 
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                 var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+});
+   </script>	
+	
+<script>
+		$(document).ready(function(){
+			$('#ex1').zoom();
+			$('#ex2').zoom({ on:'grab' });
+			$('#ex3').zoom({ on:'click' });			 
+			$('#ex4').zoom({ on:'toggle' });
+		});
+	</script>
+</body>
+</html>

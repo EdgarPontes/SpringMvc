@@ -1,0 +1,36 @@
+.container .row select {
+	margin-bottom: 15px;
+}
+
+.container .row .ratings {
+	margin: 20px 0 20px 0;
+	color: burlywood;
+}
+
+.container .calcular_frete_class {
+	margin-top: 25%;
+}
+/* these styles are for the demo, but are not required for the plugin */
+.zoom {
+	display: inline-block;
+	position: relative;
+}
+/* magnifying glass icon */
+.zoom:after {
+	content: '';
+}
+
+.zoom img::selection {
+	background-color: transparent;
+}
+
+.hide-bullets {
+	list-style: none;
+	margin-left: -40px;
+	margin-top: 20px;
+}
+
+.principal-container {
+	margin-bottom: 7%;
+	margin-top: 7%;
+}
