@@ -55,8 +55,8 @@ public class ProdutoDetalheController {
 		this.codigoProduto = codigo;
 		
 		ModelAndView mv = new ModelAndView("produto_detalhe");
-		List<String> lista = pesquisa();
-		mv.addObject("todasCategoria", lista);
+		
+		mv.addObject("todasCategoria", pesquisa());
 		mv.addObject("todosContatos", pesquisaContato());
 		mv.addObject("produtos", produto);
 		
@@ -105,14 +105,14 @@ public class ProdutoDetalheController {
 		enviarEmail.enviar();
 	}
 
-	public List<String> pesquisa() {
+	public List<Categoria> pesquisa() {
 		List<Categoria> todosCategoria = categorias.findAll();
 		List<String> lista = new ArrayList<>();
 
 		for (Categoria categoria : todosCategoria) {
 			lista.add(categoria.getNomeCategoria());
 		}
-		return lista;
+		return todosCategoria;
 	}
 
 	public List<Contato> pesquisaContato() {
