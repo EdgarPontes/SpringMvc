@@ -116,9 +116,8 @@ a:hover{
 	color: #ddd !important;
 }
 .mensagem_oferta{
-	padding: 4% 0 4% 0;
     background-color: #9e0808;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.24)
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.24)
 }
 .mensagem_oferta .form-group{
 	width: 60%;
