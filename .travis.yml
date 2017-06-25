@@ -7,3 +7,7 @@ install:
   - chmod +x mvnw
 script:
 - mvn test -B
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database springbootdb;' -U postgres
