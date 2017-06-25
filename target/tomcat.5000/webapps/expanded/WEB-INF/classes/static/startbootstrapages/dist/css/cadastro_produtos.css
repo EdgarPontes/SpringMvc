@@ -1,0 +1,17 @@
+.form-group{
+    margin-bottom: 7%;
+}
+.form-group input{
+	margin-bottom: 5px;
+}
+.btn.btn-success{
+	float: right;
+}
+.form-group #codigo_produto{
+	width: 40%;
+}
+.buttons-produtos{
+	position: relative;
+    text-align: -webkit-right;
+    margin: 5% 0 5% 0;
+}

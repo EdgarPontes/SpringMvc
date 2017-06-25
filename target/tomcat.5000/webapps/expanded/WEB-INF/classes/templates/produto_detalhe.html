@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf.org"
+				layout:decorator="LayoutPadrao">
+<head>
+    <title>Shop Homepage - Start Bootstrap Template</title>
+</head>
+
+<section layout:fragment="conteudo">
+   <div class="container principal-container" th:each="produto:${produtos}" th:value ="${produto}" >
+		<div class="row">
+			<div class="col-xs-3">
+				<h3 th:text="${produto.nome}"></h3>
+				<p th:text="${produto.descricao}">
+				</p>
+
+			</div>
+			<div class="col-xs-6">
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+								<div class="carousel slide" id="myCarousel">
+									<!-- Carousel items -->
+									<div class="carousel-inner">
+										<div class="active item zoom" id='ex1' data-slide-number="0">
+ 											<img  th:src="@{/imagens/} + ${produto.imagem1}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="1">
+											 <img  th:src="@{/imagens/} + ${produto.imagem2}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="2">
+											 <img  th:src="@{/imagens/} + ${produto.imagem3}" alt=""/>
+										</div>
+
+										<div class="item" data-slide-number="3">
+											 <img  th:src="@{/imagens/} + ${produto.imagem4}" alt=""/>
+										</div>
+									</div>
+									<!-- Carousel nav -->
+									<a class="left carousel-control" href="#myCarousel"
+										role="button" data-slide="prev"> <span
+										class="glyphicon glyphicon-chevron-left"></span>
+									</a> <a class="right carousel-control" href="#myCarousel"
+										role="button" data-slide="next"> <span
+										class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div><!--/Slider-->
+
+                <div class="row hidden-xs" id="slider-thumbs">
+                        <!-- Bottom switcher of slider -->
+                        <ul class="hide-bullets">
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-0"> <img  th:src="@{/imagens/} + *{produto.imagem1}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-1"> <img  th:src="@{/imagens/} + *{produto.imagem2}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-2"> <img  th:src="@{/imagens/} + *{produto.imagem3}" alt=""/></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-3"> <img  th:src="@{/imagens/} + *{produto.imagem4}" alt=""/></a>
+                            </li>
+                        </ul>                 
+                </div>
+			</div>
+			    <div class="col-xs-3">
+				    <div class="valor_produto">
+<!-- 		                    <h4><a href="#">Protetor de Molas Para Cama Elástica Diversos Tamanhos</a></h4> -->
+		                    <h4 class="valorTitulo" th:if="${!#strings.isEmpty(produto.produtoPromocao)}">R$ <span th:text="${produto.valorComDesconto}"></span></h4>
+			                <h4 class="valorTitulo" th:if="${#strings.isEmpty(produto.produtoPromocao)}">R$ <span th:text="${produto.valorProduto}"></span></h4>
+			                
+			                <div class="ratings">
+                                <p class="pull-right" th:if="${!#strings.isEmpty(produto.produtoPromocao)}">OFERTA</p>
+                                <p th:if="${!#strings.isEmpty(produto.freteGratis)}">FRETE GRÁTIS</p>
+				            </div>
+
+			        <form method="POST" action="/produto_detalhe" th:object ="${produto.codigo}">
+
+			        <div class="quantidade_class">
+<!-- 			            <div> -->
+<!-- 			               <input type="hidden" class="form-control" id="quantidade" name="codigoProduto" th:field="*{codigo}" /> -->
+<!-- 			            </div> -->
+			            <div class="form-group">
+							<label for="exampleInputEmail1">Quantidade:</label>
+							<input type="number" class="form-control" id="quantidadePedido" name="quantidadePedido" min="1"/>
+			            </div>
+			            <div class="pull-right">
+			                <button type="submit" class="btn btn-primary" onclick="buscar()">Inserir no carrinho</button>
+			            </div>
+		            </div>
+		            </form>
+				</div>
+		    </div>
+	   </div>
+   </div>
+       <!-- /.container -->
+</section>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf.org"
+	layout:decorator="LayoutPadrao">
+	
+<head>
+	<title>Ecommerce Index</title>
+</head>
+
+<section layout:fragment="conteudo">
+<!-- Page Content -->
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-3">
+			<div class="list-group">
+				<a class="list-group-item" th:each="categoria:${todasCategoria}"
+					th:href="@{/produto_categoria/{codigo}(codigo=${categoria.codigo})}"
+					th:value="${categoria.nomeCategoria}"
+					th:text="${categoria.nomeCategoria}"></a>
+			</div>
+		</div>
+
+		<div class="col-md-9">
+
+			<div class="row carousel-holder">
+
+				<div class="col-md-12">
+					<div id="carousel-example-generic" class="carousel slide"
+						data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="item active">
+								<img class="slide-image" th:src="@{/imagens/index1.jpg}" alt="" />
+							</div>
+							<div class="item">
+								<img class="slide-image" th:src="@{/imagens/index2.jpg}" alt="" />
+							</div>
+							<div class="item">
+								<img class="slide-image" th:src="@{/imagens/index3.jpg}" alt="" />
+							</div>
+						</div>
+						<a class="left carousel-control" href="#carousel-example-generic"
+							data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left"></span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic" data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-xs-12 color_titulo_azul no-padding">OFERTAS	ESPECIAIS</div>
+
+			<div class="row">
+
+				<div class="col-sm-4 col-lg-4 col-md-4"
+					th:each="categoria:${todosProdutos}">
+					<div class="thumbnail">
+						<img th:src="@{/imagens/} + *{categoria.imagem1}" alt="" />
+						<div class="caption">
+							<!--                             th:href="@{'/produto/'+${categoria.nome}(orderId=${categoria.codigo})}" -->
+							<h4>
+								<a
+									th:href="@{/produto_detalhe/{codigo}(codigo=${categoria.codigo})}"
+									th:text="${categoria.nome}"></a>
+							</h4>
+							<div th:if="${!#strings.isEmpty(categoria.produtoPromocao)}">
+								<h4 class="fonte_cinza">
+									<del>
+										DE:R$ <span th:text="${{categoria.valorProduto}}"></span>
+									</del>
+								</h4>
+								<h4 class="">
+									POR:R$ <span th:text="${{categoria.valorComDesconto}}"></span>
+								</h4>
+							</div>
+							<div th:if="${#strings.isEmpty(categoria.produtoPromocao)}">
+								<h4 class="">
+									POR:R$ <span th:text="${{categoria.valorProduto}}"></span>
+								</h4>
+							</div>
+						</div>
+						<div class="ratings">
+							<p class="pull-right"
+								th:if="${!#strings.isEmpty(categoria.produtoPromocao)}">OFERTA</p>
+							<p th:if="${!#strings.isEmpty(categoria.freteGratis)}">FRETE
+								GRÁTIS</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+<!-- /.container -->
+</section>
+</html>
