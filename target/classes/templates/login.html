@@ -80,12 +80,12 @@
 </head>
 <body>
 <div class="container-fluid">
- <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
+	<div th:if="${param.error}">
+	            Invalid username and password.
+	</div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
 	 <form class="register-form" th:action="@{/login}" method="post"> 
       <div class="row">
            <div class="col-md-4 col-sm-4 col-lg-4">
