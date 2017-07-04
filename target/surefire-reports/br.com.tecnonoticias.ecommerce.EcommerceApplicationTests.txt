@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.tecnonoticias.ecommerce.EcommerceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.848 sec - in br.com.tecnonoticias.ecommerce.EcommerceApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 sec - in br.com.tecnonoticias.ecommerce.EcommerceApplicationTests
